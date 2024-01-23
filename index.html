@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="heroSection">
+      <div class="container">
+        <div class="text" id="text">
+          <h1 id="firstText">Will You Go On a Date With Me?</h1>
+        </div>
+        <div class="images">
+          <img src="img/photofunky.gif" alt="image" id="myImage" />
+        </div>
+        <div class="buttons">
+          <button
+            id="noButton"
+            onmouseover="moveButton()"
+            onclick="moveButton()"
+          >
+            No
+          </button>
+          <button onclick="changeImage('yes')">Yes</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const getImage = document.getElementById("myImage");
+      const firstText = document.getElementById("firstText");
+      const text = document.getElementById("text");
+      let hoverCount = 0;
+
+      function changeImage(userClicked) {
+        if (userClicked == "yes") {
+          getImage.src = "img/yes1.gif";
+          noButton.style.top = "0px";
+          noButton.style.left = "0px";
+        } else {
+          getImage.src = "img/crying.gif";
+        }
+        firstText.innerHTML = 'She said "Yes" ';
+
+        document.querySelector(".buttons").style.display = "none";
+      }
+      function moveButton() {
+        const movements = [
+          { top: "-50vh", left: "0" },
+          { top: "-50vh", left: "30vw" },
+          { top: "10vh", left: "30vw" },
+        ];
+
+        noButton.style.top = movements[hoverCount % movements.length].top;
+        noButton.style.left = movements[hoverCount % movements.length].left;
+
+        hoverCount++;
+      }
+    </script>
+  </body>
+</html>
